@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.aws_s3_wrapper.grpc.file_upload";
+option java_outer_classname = "FileUploadProto";
+
+service FileUploadService {
+  rpc uploadFile(stream FileChunk) returns (UploadStatus) {}
+}
+
+message FileChunk {
+  bytes content = 1;
+}
+
+message UploadStatus {
+  string message = 1;
+  bool success = 2;
+}

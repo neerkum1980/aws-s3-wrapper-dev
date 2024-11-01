@@ -1,8 +1,5 @@
-[default]
-*                           @dmsg
-
 [security]
-CODEOWNERS                  @dmsg/roles/sec
+CODEOWNERS                  @/roles/sec
 
 ^[documenation]
-README.md                   @dmsg
+README.md                   @
