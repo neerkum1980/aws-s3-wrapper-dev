@@ -20,7 +20,7 @@ public class FileUploadClientHttp {
     }
 
     public void run() throws Exception {
-        File file = new File("C:\\dev\\aws-s3-wrapper-dev\\README.md");
+        File file = new File("/home/neeraj/aws-s3-wrapper-dev/README.md");
 
         // Here we should build binary data from a protobuf object, NOT a markdown file.
         byte[] data = Files.readAllBytes(file.toPath());
