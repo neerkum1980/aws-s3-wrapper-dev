@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "2c579089-7fa1-4b66-9426-9583afb176af",
+		"name": "s3_wrapperollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21753298"
+	},
+	"item": [
+		{
+			"name": "listBucketItems",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/s3/list-objects?bucketName=neeraj-ch-bucket-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3",
+						"list-objects"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "neeraj-ch-bucket-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload file with a path",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "csrfToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3/upload?bucketName=neeraj-ch-bucket-1&filepath=C:%5CUsers%5Cneeraj%5CDownloads%5Cpk-4WFD5QWRAVGBYPPGRIZ6U3UGYGZPYWCA.pem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "neeraj-ch-bucket-1"
+						},
+						{
+							"key": "filepath",
+							"value": "C:%5CUsers%5Cneeraj%5CDownloads%5Cpk-4WFD5QWRAVGBYPPGRIZ6U3UGYGZPYWCA.pem"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploadFileContent",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3/upload?bucketName=neeraj-ch-bucket-1&filepath=C:%5CUsers%5Cneeraj%5CDownloads%5Cpk-4WFD5QWRAVGBYPPGRIZ6U3UGYGZPYWCA.pem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "neeraj-ch-bucket-1"
+						},
+						{
+							"key": "filepath",
+							"value": "C:%5CUsers%5Cneeraj%5CDownloads%5Cpk-4WFD5QWRAVGBYPPGRIZ6U3UGYGZPYWCA.pem"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readcontent of a file",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/s3/download?bucketName=neeraj-ch-bucket-1&key=best-practices-building-data-lake-for-games.pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3",
+						"download"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "neeraj-ch-bucket-1"
+						},
+						{
+							"key": "key",
+							"value": "best-practices-building-data-lake-for-games.pdf"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

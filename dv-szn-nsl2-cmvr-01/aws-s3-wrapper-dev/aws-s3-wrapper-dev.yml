@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet # generate multiple applications based on generators
+metadata:
+  name: -aws-s3-wrapper-dev
+  namespace: lgt-argocd-
+spec:
+  generators:
+    - list:
+        elements: # one variable group per environment to iterate over and create applications
+          # in
+          - application: aws-s3-wrapper-dev
+            stage: dv
+            revision: dv
+            namespace: infra
+            url: 'https://kubernetes.default.svc'
+            cluster: dv-szn-nsl2-cmvr-01
+  template:
+    metadata:
+      name: {{application}}-{{stage}}
+      namespace: infra
+      labels:
+        app.kubernetes.io/name: {{application}}
+        app.kubernetes.io/instance: {{application}}-{{stage}}
+      annotations:
+        revision: {{revision}}
+    spec:
+      destination:
+        namespace: {{namespace}}
+        server: {{url}}
+      project: 
+      source:
+        helm: # we usually install helm charts
+          passCredentials: true
+          releaseName: {{application}}
+          valueFiles:
+            - values.yaml
+            - ../values/{{application}}-{{cluster}}.yaml
+        path: '/helm/' # this is the path in the repo where the helm chart is located
+        repoURL: https://gitlab.nimbusplane.io//{{application}}-ops.git
+        targetRevision: {{revision}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=false
